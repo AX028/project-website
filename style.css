@@ -13,6 +13,8 @@ body {
   overflow: auto;
 }
 
+/*please work*/
+
 .container {
   width: 100%;
   max-width: 2100px;
@@ -180,4 +182,18 @@ ul p {
   ul li {
     font-size: 1.1em;
   }
+}
+
+.form1 {
+  padding: 70px;
+
+}
+
+input[type="email"], input[type="submit"] {
+  width: 200px;
+  
+}
+
+button:hover {
+  background-color: #45a049;
 }
