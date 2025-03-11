@@ -9,9 +9,12 @@ def home():
 
 @app.route('/submit', methods = ['POST'])
 def submit():
-  name = request.form.get('name')
-  email = request.form.get('email')
-  phone = request.form.get('phone')
-  message = request.form.get('message')
+  name = request.form.get('name', 'N/A')
+  email = request.form.get('email', 'N/A')
+  phone = request.form.get('phone', 'N/A')
+  message = request.form.get('message', 'N/A')
+
   return render_template('submit.html', name = name, email = email, phone = phone, message = message)
 
+if __name__ == "__main__":
+    app.run(debug=True)
