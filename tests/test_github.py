@@ -67,3 +67,21 @@ def test_client_serves_stale_data_after_refresh_failure() -> None:
         snapshot = client.get_projects()
     assert snapshot.cache == "stale"
     assert snapshot.projects == [{"name": "cached"}]
+
+
+def test_client_falls_back_to_latest_tag_when_no_release_exists() -> None:
+    client = GitHubProjectClient(ttl_seconds=600)
+
+    def fake_request(path):
+        if path.endswith("/releases/latest"):
+            raise urllib.error.HTTPError(path, 404, "missing", {}, None)
+        if "/tags?" in path:
+            return [{"name": "v1.0.0"}]
+        if "/commits?" in path:
+            return []
+        return {"name": "project-simulation", "html_url": "https://example.test/repo"}
+
+    with patch.object(client, "_request", side_effect=fake_request):
+        project = client._fetch_repository("AX028/project-simulation")
+    assert project["latest_release"]["tag"] == "v1.0.0"
+    assert project["latest_release"]["url"].endswith("/releases/tag/v1.0.0")

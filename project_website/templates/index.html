@@ -124,6 +124,7 @@ enemy = create_enemy(<span class="gold">"wraith"</span>, level=<span class="cyan
         <p>{{ project.description }}</p>
         <dl><div><dt>Branch</dt><dd>{{ project.default_branch }}</dd></div><div><dt>Open items</dt><dd>{{ project.open_issues }}</dd></div></dl>
         <p class="commit">{{ project.latest_commit.message }}</p>
+        {% if project.latest_release %}<p class="release"><span>Latest release</span><a href="{{ project.latest_release.url }}">{{ project.latest_release.tag }} ↗</a></p>{% endif %}
         <a href="{{ project.url }}">Open repository <span aria-hidden="true">↗</span></a>
       </article>
       {% endfor %}
@@ -159,4 +160,3 @@ enemy = create_enemy(<span class="gold">"wraith"</span>, level=<span class="cyan
   </div>
 </section>
 {% endblock %}
-
