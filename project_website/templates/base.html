@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project Simulation is a deterministic, headless fantasy RPG framework built in Python.">
+  <meta name="theme-color" content="#08111b">
+  <title>{% block title %}Project Simulation{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='mark.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Project Simulation home">
+      <img src="{{ url_for('static', filename='mark.svg') }}" alt="" width="32" height="32">
+      <span>PROJECT<span class="brand-accent">//SIM</span></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#system">System</a>
+      <a href="#roster">Roster</a>
+      <a href="#activity">Activity</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="button button-small" href="https://github.com/AX028/project-simulation">View source</a>
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer>
+    <p>Designed for reproducible systems, not predetermined stories.</p>
+    <p>Publicly viewable source · No license granted yet</p>
+  </footer>
+</body>
+</html>
+
