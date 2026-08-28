@@ -81,6 +81,7 @@ pre { overflow: auto; margin: 0; }
 .project-card dl { display: flex; gap: 3rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .project-card dt { color: var(--muted); font-size: .7rem; text-transform: uppercase; }.project-card dd { margin: 0; font-family: ui-monospace, monospace; }
 .project-card .commit { font-family: ui-monospace, monospace; font-size: .78rem; }.project-card a { color: var(--cyan); font-weight: 800; text-decoration: none; }
+.project-card .release { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font: 700 .72rem ui-monospace, monospace; text-transform: uppercase; }
 .cache-state { color: var(--muted); font: .75rem ui-monospace, monospace; }
 .contact-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
 .contact-copy { position: sticky; top: 120px; align-self: start; }.contact-copy p { color: var(--muted); }
@@ -92,4 +93,3 @@ footer { width: min(var(--max), calc(100% - 2.5rem)); margin: auto; padding: 2re
 @media (max-width: 900px) { .site-header nav { display: none; }.hero { min-height: auto; grid-template-columns: 1fr; }.terminal { transform: none; }.feature-grid { grid-template-columns: 1fr 1fr; }.feature-card.featured { grid-row: auto; grid-column: span 2; min-height: 360px; }.pipeline { grid-template-columns: 1fr; }.pipeline i { transform: rotate(90deg); justify-self: center; }.contact-section { grid-template-columns: 1fr; }.contact-copy { position: static; } }
 @media (max-width: 620px) { .site-header { min-height: 64px; }.site-header .button-small { display: none; }.hero, .section, footer { width: min(100% - 1.5rem, var(--max)); }.hero { padding-top: 4rem; }.hero-actions, .split-heading, footer { align-items: flex-start; flex-direction: column; }.metrics { width: 100%; justify-content: space-between; gap: .8rem; }.feature-grid, .class-grid, .project-grid, .field-row { grid-template-columns: 1fr; }.feature-card.featured { grid-column: auto; }.class-card { border-right: 0; }.class-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--line); }.class-card:last-child { border-bottom: 0; }.form-shell { padding: 1.2rem; }.terminal pre { min-height: 320px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
-

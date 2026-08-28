@@ -32,6 +32,27 @@ def test_health_and_public_api(app, client) -> None:
     }
 
 
+def test_home_displays_latest_release(app, client) -> None:
+    app.extensions["github_projects"].get_projects = lambda: ProjectSnapshot(
+        [
+            {
+                "name": "project-simulation",
+                "description": "Framework",
+                "url": "https://example.test/repo",
+                "default_branch": "main",
+                "open_issues": 0,
+                "latest_commit": {"message": "Ship v1"},
+                "latest_release": {"tag": "v1.0.0", "url": "https://example.test/v1"},
+            }
+        ],
+        "fresh",
+        "2026-08-27",
+    )
+    response = client.get("/")
+    assert b"Latest release" in response.data
+    assert b"v1.0.0" in response.data
+
+
 def test_security_headers(app, client) -> None:
     _disable_network(app)
     response = client.get("/")

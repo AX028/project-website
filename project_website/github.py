@@ -58,7 +58,15 @@ class GitHubProjectClient:
         except urllib.error.HTTPError as exc:
             if exc.code != 404:
                 raise
-            release = None
+            tags = self._request(f"/repos/{full_name}/tags?per_page=1")
+            release = (
+                {
+                    "tag_name": tags[0]["name"],
+                    "html_url": f"https://github.com/{full_name}/releases/tag/{tags[0]['name']}",
+                }
+                if tags
+                else None
+            )
         latest = commits[0] if commits else {}
         commit = latest.get("commit", {})
         return {
